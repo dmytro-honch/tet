@@ -1,0 +1,4 @@
+@import "App.css";
+@import "./components/_loader.css";
+@import "./components/_menu.css";
+@import "./components/_tetris.css";

@@ -1,0 +1,127 @@
+@keyframes loader-appearing {
+    from  {opacity: 0}
+    to    {opacity: 1}
+}
+
+.loader__container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 34, 37, 0.8);
+    animation: loader-appearing .2s 1 ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes loader-interactive {
+    0% {
+        transform: rotate(0) scale(1);
+        filter: grayscale(100%);
+    }
+    10% {
+        transform: rotate(3deg) scale(1.1);
+    }
+    20% {
+        transform: rotate(-2deg) scale(1.15);
+    }
+    30% {
+        transform: rotate(0deg) scale(.95);
+    }
+    40% {
+        transform: rotate(-1deg) scale(.87);
+    }
+    50% {
+        transform: rotate(2deg) scale(1);
+    }
+    60% {
+        transform: rotate(0deg) scale(1.15);
+    }
+    85% {
+        transform: rotate(-3deg) scale(.95);
+    }
+    100% {
+        transform: rotate(0) scale(1);
+        filter: grayscale(100%);
+    }
+}
+
+.loader {
+    fill: rgb(255, 255, 255);
+    stroke: rgba(0,0,0,.3);
+    animation: loader-interactive 2.5s infinite ease-in-out;
+    animation-delay: 1s;
+    width: 15rem;
+    max-width: 100%;
+    height: auto;
+}
+
+@keyframes appearing-from-top {
+    0%   {opacity: 0;
+          transform: translateY(-200px);}
+    20%  {opacity: 1;}
+    100% {transform: translateY(0);}
+}
+
+@keyframes appearing-from-bottom {
+    0%   {opacity: 0; transform: translateY(200px);}
+    20%  {opacity: 1;}
+    100% {transform: translateY(0);}
+}
+
+.loader g.f1 {
+    animation: appearing-from-top .7s 1 ease-out;
+    fill: #ffe300;
+}
+
+.loader g.f2 {
+    animation: appearing-from-bottom .7s 1 ease-out;
+    fill: #00ffd5;
+}
+
+.loader g.f3 g:first-child {
+    animation: appearing-from-top .7s 1 ease-out;
+    fill: #ff4141;
+}
+
+.loader g.f3 g:last-child {
+    animation: appearing-from-bottom .7s 1 ease-out;
+    fill: #6061ff;
+}
+
+.loader g.f4 g:first-child {
+    animation: appearing-from-top .7s 1 ease-out;
+    fill: #00ffd5;
+}
+
+.loader g.f4 g:last-child {
+    animation: appearing-from-bottom .7s 1 ease-out;
+    fill: #ff4141;
+}
+
+.loader g.f5 {
+    animation: appearing-from-top .7s 1 ease-out;
+    fill: #ff4141;
+}
+
+.loader g.f6 g:first-child {
+    animation: appearing-from-bottom .7s 1 ease-out;
+    fill: #ff4141;
+}
+
+.loader g.f6 g:last-child {
+    animation: appearing-from-top .7s 1 ease-out;
+    fill: #ffe300;
+}
+
+.loader g.f7 g:first-child {
+    animation: appearing-from-bottom .7s 1 ease-out;
+    fill: #00ffd5;
+}
+
+.loader g.f7 g:last-child {
+    animation: appearing-from-top .7s 1 ease-out;
+    fill: #80ff00;
+}
