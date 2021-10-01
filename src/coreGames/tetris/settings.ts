@@ -1,3 +1,5 @@
+import { PointsType } from './types';
+
 export enum Colors {
   '#ed4938',
   '#adc607',
@@ -5,12 +7,12 @@ export enum Colors {
   '#de3974',
   '#7b3dba',
   '#f87117',
-  '#03cec2'
+  '#03cec2',
 }
 
-export const Points: {[key:string]: number;} = {
+export const Points: PointsType = {
   '1': 40,
   '2': 120,
   '3': 300,
-  '4': 1200
-}
+  '4': 1200,
+};

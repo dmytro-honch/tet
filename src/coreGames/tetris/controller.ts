@@ -15,7 +15,6 @@ export class Controller {
     this.gameSpeed = 1000 - (this.game.getState().level + 1) * 100;
 
     document.addEventListener('keydown', this.handleKeydown.bind(this));
-
     this.view.renderStartScreen();
   }
 
@@ -53,8 +52,8 @@ export class Controller {
   }
 
   handleKeydown(event: KeyboardEvent) {
-    switch (event.keyCode) {
-      case 13: // Enter
+    switch (event.key.toLowerCase()) {
+      case 'enter':
         this.view.render(this.game.getState());
         if (this.isPlaying) {
           this.pause();
@@ -62,19 +61,19 @@ export class Controller {
           this.play();
         }
         break;
-      case 37: // left arrow
+      case 'arrowleft':
         this.game.movePeaceLeft();
         this.view.render(this.game.getState());
         break;
-      case 38: // up arrow
+      case 'arrowup':
         this.game.rotatePiece();
         this.view.render(this.game.getState());
         break;
-      case 39: // right arrow
+      case 'arrowright':
         this.game.movePeaceRight();
         this.view.render(this.game.getState());
         break;
-      case 40: // down arrow
+      case 'arrowdown':
         this.game.movePeaceDown();
         this.view.render(this.game.getState());
         break;

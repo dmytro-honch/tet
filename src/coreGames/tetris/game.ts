@@ -1,16 +1,16 @@
 import { PieceType, PlayfieldType } from './types';
-import { t_I, t_J, t_L, t_O, t_S, t_T, t_Z } from './tetrominoes';
 import { Points } from './settings';
 import { increaseStats } from '../../store/tetrisReducer';
 import { store } from '../../store';
-
+import { createBlockHelper } from './helpers';
 
 export class Game {
   score = 0;
   lines = 0;
-  playfield:   PlayfieldType = this.createPlayfield();
+  playfield: PlayfieldType = this.createPlayfield();
   activePiece: PieceType = this.createPiece();
-  nextPiece:   PieceType = this.createPiece();
+  nextPiece: PieceType = this.createPiece();
+  isOver = false;
 
   get level() {
     return Math.floor(this.lines * 0.1);
@@ -61,38 +61,14 @@ export class Game {
     const type = 'IJLOSTZ'[index];
     const piece: PieceType = { x: 0, y: 0 };
 
-    switch (type) {
-      case 'I':
-        piece.blocks = t_I;
-        break;
-      case 'J':
-        piece.blocks = t_J;
-        break;
-      case 'L':
-        piece.blocks = t_L;
-        break;
-      case 'O':
-        piece.blocks = t_O;
-        break;
-      case 'S':
-        piece.blocks = t_S;
-        break;
-      case 'T':
-        piece.blocks = t_T;
-        break;
-      case 'Z':
-        piece.blocks = t_Z;
-        break;
-      default:
-        throw new Error('Unknown figure type')
-    }
-
+    piece.blocks = createBlockHelper(type);
     piece.x = Math.ceil((10 - piece.blocks[0].length) / 2);
     piece.y = -1;
+
     return piece;
   }
 
-  movePeaceLeft():void {
+  movePeaceLeft() {
     this.activePiece.x -= 1;
 
     if (this.isCollision()) {
@@ -100,7 +76,7 @@ export class Game {
     }
   }
 
-  movePeaceRight():void {
+  movePeaceRight() {
     this.activePiece.x += 1;
 
     if (this.isCollision()) {
@@ -108,7 +84,7 @@ export class Game {
     }
   }
 
-  movePeaceDown():void {
+  movePeaceDown() {
     this.activePiece.y += 1;
 
     if (this.isCollision()) {
@@ -129,7 +105,7 @@ export class Game {
   }
 
   rotateBlocks(clockwise: boolean = true) {
-    let { blocks } = this.activePiece;
+    const { blocks } = this.activePiece;
     const length = blocks.length;
     const x = Math.floor(length / 2);
     const y = length - 1;
@@ -141,30 +117,31 @@ export class Game {
 
         if (clockwise) {
           // by clockwise rotation
-          blocks[i][j]          = blocks[y - j][i];
-          blocks[y - j][i]      = blocks[y - i][y - j];
-          blocks[y - i][y - j]  = blocks[j][y - i];
-          blocks[j][y - i]      = temp;
+          blocks[i][j] = blocks[y - j][i];
+          blocks[y - j][i] = blocks[y - i][y - j];
+          blocks[y - i][y - j] = blocks[j][y - i];
+          blocks[j][y - i] = temp;
         } else {
           // opposite direction if there is collision
-          blocks[i][j]          = blocks[j][y - i];
-          blocks[j][y - i]      = blocks[y - i][y - j];
-          blocks[y - i][y - j]  = blocks[y - j][i];
-          blocks[y - j][i]      = temp;
+          blocks[i][j] = blocks[j][y - i];
+          blocks[j][y - i] = blocks[y - i][y - j];
+          blocks[y - i][y - j] = blocks[y - j][i];
+          blocks[y - j][i] = temp;
         }
       }
     }
   }
 
-  isCollision():boolean {
+  isCollision(): boolean {
     const { blocks, x: pX, y: pY } = this.activePiece;
 
     for (let y = 0; y < blocks.length; y++) {
       for (let x = 0; x < blocks[y].length; x++) {
         if (
           blocks[y][x] &&
-          ((this.playfield[pY + y] === undefined || this.playfield[pY + y][pX + x] === undefined) ||
-          this.playfield[pY + y][pX +x])
+          (this.playfield[pY + y] === undefined ||
+            this.playfield[pY + y][pX + x] === undefined ||
+            this.playfield[pY + y][pX + x])
         ) {
           return true;
         }
@@ -174,13 +151,25 @@ export class Game {
     return false;
   }
 
-  lockPiece():void {
+  lockPiece() {
     const { blocks, x: pX, y: pY } = this.activePiece;
+
+    if (pY < 0) {
+      console.log('the end!');
+      this.isOver = true;
+    }
 
     for (let y = 0; y < blocks.length; y++) {
       for (let x = 0; x < blocks[y].length; x++) {
         if (blocks[y] && blocks[y][x]) {
-          this.playfield[pY + y][pX + x] = blocks[y][x];
+          try {
+            this.playfield[pY + y][pX + x] = blocks[y][x];
+          } catch (err) {
+            console.log('blocks', blocks);
+            console.log('pX', pX);
+            console.log('pY', pY);
+            console.log(blocks[y][x]);
+          }
         }
       }
     }
@@ -189,7 +178,7 @@ export class Game {
   clearLines() {
     const rows = 20;
     const columns = 10;
-    let lines = [];
+    const lines = [];
 
     for (let y = rows - 1; y >= 0; y--) {
       let numberOfBlocks = 0;
@@ -207,8 +196,8 @@ export class Game {
       }
     }
 
-
-    for (let index of lines) {
+    let index;
+    for (index of lines) {
       this.playfield.splice(index, 1);
       this.playfield.unshift(new Array(columns).fill(0));
     }
@@ -222,11 +211,13 @@ export class Game {
       this.lines += clearedLines;
     }
 
-    store.dispatch(increaseStats({
-      score: this.score,
-      level: this.level,
-      lines: this.lines
-    }));
+    store.dispatch(
+      increaseStats({
+        score: this.score,
+        level: this.level,
+        lines: this.lines,
+      }),
+    );
   }
 
   updatePieces() {

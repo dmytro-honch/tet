@@ -100,6 +100,7 @@ img, svg {
 
 .app-styles {
   transition: all .3s ease-in-out;
+  user-select: none;
 }
 
 .container {
@@ -157,7 +158,7 @@ h1 {
 }
 
 .tetris__canvas--wrapper {
-  height: 80vh;
+  height: 75vh;
   margin-bottom: 1rem;
   width: auto;
   max-width: 100%;
