@@ -6,6 +6,7 @@
     "express": "^4.17.1",
     "pg": "^8.7.1",
     "react": "^17.0.2",
+    "react-device-detect": "^2.0.1",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
@@ -61,12 +62,14 @@
       "prettier/prettier": "warn",
       "no-multi-spaces": [
         "off",
-        {"exceptions": {
-          "VariableDeclarator": true,
-          "ImportDeclaration": true,
-          "ObjectExpression": true,
-          "VariebleExpression": true
-        }}
+        {
+          "exceptions": {
+            "VariableDeclarator": true,
+            "ImportDeclaration": true,
+            "ObjectExpression": true,
+            "VariebleExpression": true
+          }
+        }
       ],
       "spaced-comment": [
         "warn",

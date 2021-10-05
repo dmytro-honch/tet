@@ -1,5 +1,5 @@
 import { PieceType, PlayfieldType } from './types';
-import { Points } from './settings';
+import { calculatePointsForOneLine, LVL_MAP } from './settings';
 import { increaseStats } from '../../store/tetrisReducer';
 import { store } from '../../store';
 import { createBlockHelper } from './helpers';
@@ -11,6 +11,8 @@ export class Game {
   activePiece: PieceType = this.createPiece();
   nextPiece: PieceType = this.createPiece();
   isOver = false;
+  currentLvl = 0;
+  nextLvlUp = LVL_MAP.get(this.currentLvl);
 
   get level() {
     return Math.floor(this.lines * 0.1);
@@ -207,8 +209,14 @@ export class Game {
 
   updateScore(clearedLines: number) {
     if (clearedLines > 0) {
-      this.score += Points[clearedLines] * (this.level + 1);
+      this.score += calculatePointsForOneLine(this.level, clearedLines);
       this.lines += clearedLines;
+      this.nextLvlUp -= clearedLines;
+
+      if (this.nextLvlUp <= 0) {
+        this.lvlUp();
+      }
+      console.log('nextLvlUp', this.nextLvlUp);
     }
 
     store.dispatch(
@@ -218,6 +226,14 @@ export class Game {
         lines: this.lines,
       }),
     );
+  }
+
+  lvlUp() {
+    const lowerZero = this.nextLvlUp;
+    const nextLvl = LVL_MAP.get(this.currentLvl);
+
+    this.currentLvl = this.currentLvl + 1;
+    this.nextLvlUp = nextLvl ? nextLvl + lowerZero : 200 + lowerZero;
   }
 
   updatePieces() {
