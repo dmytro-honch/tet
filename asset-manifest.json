@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/tet/static/css/main.d88d489b.chunk.css",
+    "main.js": "/tet/static/js/main.1fecb63b.chunk.js",
+    "main.js.map": "/tet/static/js/main.1fecb63b.chunk.js.map",
+    "runtime-main.js": "/tet/static/js/runtime-main.537ccc9f.js",
+    "runtime-main.js.map": "/tet/static/js/runtime-main.537ccc9f.js.map",
+    "static/js/2.bdb8f077.chunk.js": "/tet/static/js/2.bdb8f077.chunk.js",
+    "static/js/2.bdb8f077.chunk.js.map": "/tet/static/js/2.bdb8f077.chunk.js.map",
+    "static/js/3.359cbd79.chunk.js": "/tet/static/js/3.359cbd79.chunk.js",
+    "static/js/3.359cbd79.chunk.js.map": "/tet/static/js/3.359cbd79.chunk.js.map",
+    "static/js/4.16ef64f7.chunk.js": "/tet/static/js/4.16ef64f7.chunk.js",
+    "static/js/4.16ef64f7.chunk.js.map": "/tet/static/js/4.16ef64f7.chunk.js.map",
+    "static/js/5.bf802196.chunk.js": "/tet/static/js/5.bf802196.chunk.js",
+    "static/js/5.bf802196.chunk.js.map": "/tet/static/js/5.bf802196.chunk.js.map",
+    "index.html": "/tet/index.html",
+    "static/css/main.d88d489b.chunk.css.map": "/tet/static/css/main.d88d489b.chunk.css.map",
+    "static/js/2.bdb8f077.chunk.js.LICENSE.txt": "/tet/static/js/2.bdb8f077.chunk.js.LICENSE.txt",
+    "static/js/3.359cbd79.chunk.js.LICENSE.txt": "/tet/static/js/3.359cbd79.chunk.js.LICENSE.txt",
+    "static/media/switch_d.deaea3e9.png": "/tet/static/media/switch_d.deaea3e9.png",
+    "static/media/switch_n.cf7a680a.png": "/tet/static/media/switch_n.cf7a680a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.537ccc9f.js",
+    "static/js/2.bdb8f077.chunk.js",
+    "static/css/main.d88d489b.chunk.css",
+    "static/js/main.1fecb63b.chunk.js"
+  ]
+}
