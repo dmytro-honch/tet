@@ -25,6 +25,13 @@
     stroke: currentColor;
 }
 
+@media (max-width: 1200px) {
+    .menu__close--svg {
+        max-width: 1.2rem;
+        height: auto;
+    }
+}
+
 .menu__close--svg path {
     stroke-width: 5px;
     stroke-linecap: round;

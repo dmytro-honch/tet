@@ -1,25 +1,19 @@
-
-.tetris__color-switch {
-    z-index: 999;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    border: 0;
-    padding: 0 0 1rem 1rem;
-    background: none;
-    border-radius: 0 0 50% 50%;
-    max-width: 5rem;
-    height: auto;
-    transition: all .2s ease-in-out;
-    cursor: pointer;
+.tetris__canvas--wrapper {
+    margin-bottom: 1rem;
+    width: auto;
+    max-width: 100%;
+    vertical-align: bottom;
+    position: relative;
 }
 
-.tetris__color-switch:hover {
-    filter: brightness(120%);
-}
-
-.tetris__color-switch:focus {
-    outline: none;
+.tetris__reset {
+    background: #ff4141;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    padding: 7px 20px;
+    margin-bottom: 1rem;
+    color: white;
 }
 
 .tetris__canvas {
@@ -29,24 +23,8 @@
     margin: 0 auto;
 }
 
-.tetris__canvas--wrapper {
-    height: 75vh;
-    margin-bottom: 1rem;
-    width: auto;
-    max-width: 100%;
-    vertical-align: bottom;
-    position: relative;
-}
-
-.tetris__canvas--wrapper.mobile {
-    display: flex;
-    justify-content: space-between;
-}
-
 .tetris__game-btn--wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
     padding: 10px;
 }
 
@@ -59,37 +37,33 @@
     border-radius: 50%;
     font-size: 1.2rem;
     margin: 20px;
-    background-color: #ffcc00;
 }
 
 .tetris__game-btn.pause {
     margin-right: auto;
+    background-color: #ed4938;
+}
+
+.tetris__game-btn.top {
+    background-color: #adc607;
+}
+
+.tetris__game-btn.down {
+    background-color: #f4c10d;
+}
+
+.tetris__game-btn.left {
+    background-color: #de3974;
+}
+
+.tetris__game-btn.right {
+    background-color: #7b3dba;
 }
 
 @media (orientation: portrait) {
-    .tetris__canvas--wrapper.mobile {
-        display: grid;
-        grid-template-areas:
-    'c c'
-    'l r';
-        grid-column-gap: 10px;
-        grid-template-rows: auto 1fr;
-        grid-template-columns: 1fr 1fr;
-    }
-
     .tetris__canvas {
-        grid-area: c;
-    }
-
-    .tetris__canvas--wrapper .tetris__game-btn--wrapper {
-    }
-
-    .tetris__canvas--wrapper .tetris__game-btn--wrapper.left {
-        grid-area: l;
-    }
-
-    .tetris__canvas--wrapper .tetris__game-btn--wrapper.right {
-        grid-area: r;
+        height: 60vh;
+        width: auto;
     }
 
     .tetris__game-btn--wrapper {
@@ -99,12 +73,20 @@
 
 }
 
-.tetris__reset {
-    background: #ff4141;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    padding: 7px 20px;
-    margin-bottom: 1rem;
-    color: white;
+@media (orientation: landscape) {
+    .tetris__canvas--wrapper {
+        height: 70vh;
+        width: auto;
+    }
+
+    .tetris__canvas--wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tetris__game-btn--wrapper {
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 10px;
+    }
 }

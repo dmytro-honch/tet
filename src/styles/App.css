@@ -14,9 +14,9 @@ html {
   line-height: 1.5;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
   html {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -126,4 +126,27 @@ h1 {
 
 .coming-soon {
   color: #999;
+}
+
+.tetris__color-switch {
+  z-index: 999;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: 0;
+  padding: 0 0 1rem 1rem;
+  background: none;
+  border-radius: 0 0 50% 50%;
+  max-width: 5rem;
+  height: auto;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+.tetris__color-switch:hover {
+  filter: brightness(120%);
+}
+
+.tetris__color-switch:focus {
+  outline: none;
 }

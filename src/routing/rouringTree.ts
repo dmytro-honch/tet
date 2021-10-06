@@ -9,12 +9,19 @@ export const routingTree = [
     component: WelcomePage,
     exact: true,
     key: 'WelcomePage',
-    title: 'Home'
-  }, {
+    title: 'Home',
+  },
+  {
     path: '/play-tetris',
     component: TetrisPage,
     exact: true,
     key: 'TetrisPage',
-    title: 'Tetris'
-  }
-]
+    title: 'Tetris',
+  },
+  {
+    path: '*',
+    component: WelcomePage,
+    key: 'WelcomePage 2',
+    title: 'Welcome to games!',
+  },
+];

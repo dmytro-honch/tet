@@ -1,7 +1,7 @@
-import isMobile from 'react-device-detect';
 import { Game } from './game';
 import { View } from './view';
 import { SPEED_MAP } from './settings';
+import { ifDeviceHasTouch } from '../../utills/detectDevice';
 
 export class Controller {
   game: Game;
@@ -11,6 +11,7 @@ export class Controller {
   isOver: boolean = false;
   gameSpeed: number;
   currentLvl: number;
+  isTouch: boolean;
 
   constructor(game: Game, view: View) {
     this.game = game;
@@ -18,13 +19,13 @@ export class Controller {
     this.intervalID = null;
     this.currentLvl = this.game.getState().level;
     this.gameSpeed = SPEED_MAP.get(this.currentLvl);
+    this.isTouch = ifDeviceHasTouch();
 
-    if (isMobile) {
+    document.addEventListener('keydown', this.handleKeydown.bind(this));
+    if (this.isTouch) {
       setTimeout(() => {
         this.handleMobileActions();
       }, 100);
-    } else {
-      document.addEventListener('keydown', this.handleKeydown.bind(this));
     }
 
     this.view.renderStartScreen();
