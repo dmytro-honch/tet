@@ -61,34 +61,32 @@ export function Tetris() {
         <ScoreComponent />
       </div>
       <div className={`tetris__canvas--wrapper${!isTouch ? ' mobile' : ''}`}>
-        {isTouch ||
-          (!isOver && (
-            <div className="tetris__game-btn--wrapper left">
-              <button id="pause" className="tetris__game-btn pause">
-                ||
-              </button>
-              <button id="top" className="tetris__game-btn top">
-                ↑
-              </button>
-              <button id="bottom" className="tetris__game-btn down">
-                ↓
-              </button>
-            </div>
-          ))}
+        {isTouch && !isOver && (
+          <div className="tetris__game-btn--wrapper left">
+            <button id="pause" className="tetris__game-btn pause">
+              ||
+            </button>
+            <button id="top" className="tetris__game-btn top">
+              ↑
+            </button>
+            <button id="bottom" className="tetris__game-btn down">
+              ↓
+            </button>
+          </div>
+        )}
 
         <canvas className="tetris__canvas" width="320" height="640" ref={canvasRef} />
 
-        {isTouch ||
-          (!isOver && (
-            <div className="tetris__game-btn--wrapper right">
-              <button id="left" className="tetris__game-btn left">
-                ←
-              </button>
-              <button id="right" className="tetris__game-btn right">
-                →
-              </button>
-            </div>
-          ))}
+        {isTouch && !isOver && (
+          <div className="tetris__game-btn--wrapper right">
+            <button id="left" className="tetris__game-btn left">
+              ←
+            </button>
+            <button id="right" className="tetris__game-btn right">
+              →
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
