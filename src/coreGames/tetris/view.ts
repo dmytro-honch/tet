@@ -64,12 +64,7 @@ export class View {
       {
         message: 'GAME OVER',
         x: this.width / 2,
-        y: (this.height - 25) / 2,
-      },
-      {
-        message: 'Press ENTER to play game',
-        x: this.width / 2,
-        y: (this.height + 25) / 2,
+        y: this.height / 2,
       },
     ]);
   }

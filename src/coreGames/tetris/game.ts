@@ -1,6 +1,6 @@
 import { PieceType, PlayfieldType } from './types';
 import { calculatePointsForOneLine, LVL_MAP } from './settings';
-import { increaseStats } from '../../store/tetrisReducer';
+import { gameOver, increaseStats } from '../../store/tetrisReducer';
 import { store } from '../../store';
 import { createBlockHelper } from './helpers';
 
@@ -41,7 +41,7 @@ export class Game {
       }
     }
 
-    return { playfield, next: this.nextPiece, level: this.level };
+    return { playfield, next: this.nextPiece, level: this.level, isOver: this.isOver };
   }
 
   createPlayfield() {
@@ -87,6 +87,10 @@ export class Game {
   }
 
   movePeaceDown() {
+    if (this.isOver) {
+      return;
+    }
+
     this.activePiece.y += 1;
 
     if (this.isCollision()) {
@@ -157,8 +161,9 @@ export class Game {
     const { blocks, x: pX, y: pY } = this.activePiece;
 
     if (pY < 0) {
-      console.log('the end!');
       this.isOver = true;
+      store.dispatch(gameOver(true));
+      return;
     }
 
     for (let y = 0; y < blocks.length; y++) {
@@ -167,10 +172,7 @@ export class Game {
           try {
             this.playfield[pY + y][pX + x] = blocks[y][x];
           } catch (err) {
-            console.log('blocks', blocks);
-            console.log('pX', pX);
-            console.log('pY', pY);
-            console.log(blocks[y][x]);
+            this.isOver = true;
           }
         }
       }
@@ -216,7 +218,6 @@ export class Game {
       if (this.nextLvlUp <= 0) {
         this.lvlUp();
       }
-      console.log('nextLvlUp', this.nextLvlUp);
     }
 
     store.dispatch(

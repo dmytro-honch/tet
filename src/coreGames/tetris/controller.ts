@@ -8,6 +8,7 @@ export class Controller {
   view: View;
   intervalID: NodeJS.Timeout;
   isPlaying: boolean = false;
+  isOver: boolean = false;
   gameSpeed: number;
   currentLvl: number;
 
@@ -25,17 +26,26 @@ export class Controller {
     } else {
       document.addEventListener('keydown', this.handleKeydown.bind(this));
     }
+
     this.view.renderStartScreen();
   }
 
   update() {
+    const { level, isOver } = this.game.getState();
+
+    if (isOver) {
+      this.isOver = true;
+      this.handleGameOver();
+      return;
+    }
+
     this.game.movePeaceDown();
     this.view.render(this.game.getState());
 
-    if (this.currentLvl !== this.game.getState().level) {
-      this.currentLvl = this.game.getState().level;
+    if (this.currentLvl !== level) {
+      this.currentLvl = level;
       this.gameSpeed = SPEED_MAP.get(this.currentLvl);
-      console.log('game speed: ', this.gameSpeed);
+
       this.stopTimer();
       this.startTimer();
     }
@@ -51,7 +61,6 @@ export class Controller {
     this.isPlaying = false;
     this.stopTimer();
     this.view.renderPauseScreen();
-    // this.update();
   }
 
   startTimer() {
@@ -86,6 +95,8 @@ export class Controller {
       case 'arrowdown':
         this.handleDown();
         break;
+      default:
+        break;
     }
   }
 
@@ -97,7 +108,6 @@ export class Controller {
     const right = document.querySelector('#right');
 
     if (!pause || !top || !down || !left || !right) {
-      console.log('restart');
       setTimeout(() => {
         this.handleMobileActions();
       }, 100);
@@ -112,7 +122,12 @@ export class Controller {
   }
 
   handlePause() {
+    if (this.isOver) {
+      return;
+    }
+
     this.view.render(this.game.getState());
+
     if (this.isPlaying) {
       this.pause();
     } else {
@@ -121,22 +136,40 @@ export class Controller {
   }
 
   handleUp() {
+    if (this.isOver) {
+      return;
+    }
     this.game.rotatePiece();
     this.view.render(this.game.getState());
   }
 
   handleDown() {
+    if (this.isOver) {
+      return;
+    }
     this.game.movePeaceDown();
     this.view.render(this.game.getState());
   }
 
   handleLeft() {
+    if (this.isOver) {
+      return;
+    }
     this.game.movePeaceLeft();
     this.view.render(this.game.getState());
   }
 
   handleRight() {
+    if (this.isOver) {
+      return;
+    }
     this.game.movePeaceRight();
     this.view.render(this.game.getState());
+  }
+
+  handleGameOver() {
+    this.isPlaying = false;
+    this.stopTimer();
+    this.view.renderGameOverScreen();
   }
 }

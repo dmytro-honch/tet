@@ -10,6 +10,7 @@ const initialState = {
     [0, 0, 0],
     [0, 0, 0],
   ],
+  isGameOver: false,
 };
 
 const tetrisSlice = createSlice({
@@ -25,9 +26,13 @@ const tetrisSlice = createSlice({
       state.score = 0;
       state.level = 1;
     },
+    gameOver(state, action) {
+      state.isGameOver = action.payload;
+    },
   },
 });
 
 export default tetrisSlice.reducer;
-export const { increaseStats, clearStats } = tetrisSlice.actions;
+export const { increaseStats, clearStats, gameOver } = tetrisSlice.actions;
 export const selectTetrisStat = (state: RootStateType) => state.tetris;
+export const selectIsTetrisOver = (state: RootStateType) => state.tetris.isGameOver;
