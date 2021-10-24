@@ -143,6 +143,14 @@ h1 {
   cursor: pointer;
 }
 
+@media (max-width: 769px) {
+  .tetris__color-switch {
+    padding: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
 .tetris__color-switch:hover {
   filter: brightness(120%);
 }

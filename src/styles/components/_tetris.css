@@ -98,7 +98,7 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 769px) {
     .tetris__canvas {
         height: 40vh;
     }
