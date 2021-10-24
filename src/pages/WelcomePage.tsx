@@ -9,7 +9,7 @@ export function WelcomePage() {
         <h2>Pick the game do you want play:</h2>
         <ol>
           <li>
-            <Link className="link" to="/play-tetris">
+            <Link className="link" to="/tet/play-tetris">
               Tetris
             </Link>
           </li>
