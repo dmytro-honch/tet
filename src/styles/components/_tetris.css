@@ -25,7 +25,6 @@
 
 .tetris__game-btn--wrapper {
     display: flex;
-    padding: 10px;
 }
 
 .tetris__game-btn {
@@ -36,7 +35,7 @@
     border: none;
     border-radius: 50%;
     font-size: 1.2rem;
-    margin: 20px;
+    margin: 10px;
 }
 
 .tetris__game-btn.pause {
@@ -61,16 +60,24 @@
 }
 
 @media (orientation: portrait) {
+    .tetris__canvas--wrapper {
+        display: flex;
+        flex-direction: column;
+    }
     .tetris__canvas {
         height: 60vh;
         width: auto;
+        order: 1;
     }
 
-    .tetris__game-btn--wrapper {
-        flex-direction: row;
-        flex-basis: 50%;
+    .tetris__game-btn--wrapper.left {
+        order: 2;
     }
 
+    .tetris__game-btn--wrapper.right {
+        order: 3;
+        justify-content: flex-end;
+    }
 }
 
 @media (orientation: landscape) {
@@ -88,5 +95,11 @@
         flex-direction: column;
         justify-content: flex-end;
         padding: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .tetris__canvas {
+        height: 40vh;
     }
 }
