@@ -62,7 +62,7 @@ export function Tetris() {
         <ScoreComponent />
       </div>
       <div className={`tetris__canvas--wrapper${!isTouch ? ' mobile' : ''}`}>
-        {!isOver && (
+        {isTouch && !isOver && (
           <div className="tetris__game-btn--wrapper left">
             <button id="pause" className="tetris__game-btn pause">
               {isPlaying ? '║' : '►'}
@@ -78,7 +78,7 @@ export function Tetris() {
 
         <canvas className="tetris__canvas" width="320" height="640" ref={canvasRef} />
 
-        {!isOver && (
+        {isTouch && !isOver && (
           <div className="tetris__game-btn--wrapper right">
             <button id="left" className="tetris__game-btn left">
               ←
