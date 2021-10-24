@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/tet/static/css/main.db69c61f.chunk.css",
-    "main.js": "/tet/static/js/main.af0ad180.chunk.js",
-    "main.js.map": "/tet/static/js/main.af0ad180.chunk.js.map",
-    "runtime-main.js": "/tet/static/js/runtime-main.02a9e0e0.js",
-    "runtime-main.js.map": "/tet/static/js/runtime-main.02a9e0e0.js.map",
-    "static/js/2.bdb8f077.chunk.js": "/tet/static/js/2.bdb8f077.chunk.js",
-    "static/js/2.bdb8f077.chunk.js.map": "/tet/static/js/2.bdb8f077.chunk.js.map",
-    "static/js/3.b20961d0.chunk.js": "/tet/static/js/3.b20961d0.chunk.js",
-    "static/js/3.b20961d0.chunk.js.map": "/tet/static/js/3.b20961d0.chunk.js.map",
+    "main.css": "/tet/static/css/main.0f4cfcd6.chunk.css",
+    "main.js": "/tet/static/js/main.1875ccc1.chunk.js",
+    "main.js.map": "/tet/static/js/main.1875ccc1.chunk.js.map",
+    "runtime-main.js": "/tet/static/js/runtime-main.eeda283d.js",
+    "runtime-main.js.map": "/tet/static/js/runtime-main.eeda283d.js.map",
+    "static/js/2.d92fa7c3.chunk.js": "/tet/static/js/2.d92fa7c3.chunk.js",
+    "static/js/2.d92fa7c3.chunk.js.map": "/tet/static/js/2.d92fa7c3.chunk.js.map",
+    "static/js/3.144bb907.chunk.js": "/tet/static/js/3.144bb907.chunk.js",
+    "static/js/3.144bb907.chunk.js.map": "/tet/static/js/3.144bb907.chunk.js.map",
     "static/js/4.858dd2c6.chunk.js": "/tet/static/js/4.858dd2c6.chunk.js",
     "static/js/4.858dd2c6.chunk.js.map": "/tet/static/js/4.858dd2c6.chunk.js.map",
     "index.html": "/tet/index.html",
-    "static/css/main.db69c61f.chunk.css.map": "/tet/static/css/main.db69c61f.chunk.css.map",
-    "static/js/2.bdb8f077.chunk.js.LICENSE.txt": "/tet/static/js/2.bdb8f077.chunk.js.LICENSE.txt",
+    "static/css/main.0f4cfcd6.chunk.css.map": "/tet/static/css/main.0f4cfcd6.chunk.css.map",
+    "static/js/2.d92fa7c3.chunk.js.LICENSE.txt": "/tet/static/js/2.d92fa7c3.chunk.js.LICENSE.txt",
     "static/media/switch_d.deaea3e9.png": "/tet/static/media/switch_d.deaea3e9.png",
     "static/media/switch_n.cf7a680a.png": "/tet/static/media/switch_n.cf7a680a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.02a9e0e0.js",
-    "static/js/2.bdb8f077.chunk.js",
-    "static/css/main.db69c61f.chunk.css",
-    "static/js/main.af0ad180.chunk.js"
+    "static/js/runtime-main.eeda283d.js",
+    "static/js/2.d92fa7c3.chunk.js",
+    "static/css/main.0f4cfcd6.chunk.css",
+    "static/js/main.1875ccc1.chunk.js"
   ]
 }
