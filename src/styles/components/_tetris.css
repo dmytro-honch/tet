@@ -102,4 +102,17 @@
     .tetris__canvas {
         height: 40vh;
     }
+
+    .tetris__game-btn.pause {
+        margin-right: 10px;
+        align-self: flex-start;
+    }
+
+    .tetris__game-btn--wrapper {
+        justify-content: center;
+    }
+
+    .tetris__game-btn--wrapper.right {
+        justify-content: center;
+    }
 }

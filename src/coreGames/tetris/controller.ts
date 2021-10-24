@@ -1,6 +1,8 @@
 import { Game } from './game';
 import { View } from './view';
 import { SPEED_MAP } from './settings';
+import { gamePlaying } from '../../store/tetrisReducer';
+import { store } from '../../store';
 import { ifDeviceHasTouch } from '../../utills/detectDevice';
 
 export class Controller {
@@ -131,8 +133,10 @@ export class Controller {
 
     if (this.isPlaying) {
       this.pause();
+      store.dispatch(gamePlaying(false));
     } else {
       this.play();
+      store.dispatch(gamePlaying(true));
     }
   }
 

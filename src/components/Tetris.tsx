@@ -5,7 +5,7 @@ import { View } from '../coreGames/tetris/view';
 import { Controller } from '../coreGames/tetris/controller';
 import { BLOCKS_HEIGHT, BLOCKS_WIDTH } from '../coreGames/tetris/settings';
 import { useAppSelector } from '../hoocks';
-import { gameOver, increaseStats, selectIsTetrisOver } from '../store/tetrisReducer';
+import { gameOver, increaseStats, selectIsTetrisOver, selectIsTetrisStarted } from '../store/tetrisReducer';
 import { store } from '../store';
 import { ifDeviceHasTouch } from '../utills/detectDevice';
 
@@ -18,6 +18,7 @@ const globalObj: GlobalObjType = {
 export function Tetris() {
   const canvasRef = useRef(null);
   const isOver = useAppSelector(selectIsTetrisOver);
+  const isPlaying = useAppSelector(selectIsTetrisStarted);
   const [gamesAmount, setGamesAmount] = useState(0);
   const isTouch = ifDeviceHasTouch();
 
@@ -61,10 +62,10 @@ export function Tetris() {
         <ScoreComponent />
       </div>
       <div className={`tetris__canvas--wrapper${!isTouch ? ' mobile' : ''}`}>
-        {isTouch && !isOver && (
+        {!isOver && (
           <div className="tetris__game-btn--wrapper left">
             <button id="pause" className="tetris__game-btn pause">
-              ||
+              {isPlaying ? '║' : '►'}
             </button>
             <button id="top" className="tetris__game-btn top">
               ↑
@@ -77,7 +78,7 @@ export function Tetris() {
 
         <canvas className="tetris__canvas" width="320" height="640" ref={canvasRef} />
 
-        {isTouch && !isOver && (
+        {!isOver && (
           <div className="tetris__game-btn--wrapper right">
             <button id="left" className="tetris__game-btn left">
               ←

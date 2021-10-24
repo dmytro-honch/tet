@@ -1,6 +1,6 @@
 import { PieceType, PlayfieldType } from './types';
 import { calculatePointsForOneLine, LVL_MAP } from './settings';
-import { gameOver, increaseStats } from '../../store/tetrisReducer';
+import { gameOver, increaseStats, gamePlaying } from '../../store/tetrisReducer';
 import { store } from '../../store';
 import { createBlockHelper } from './helpers';
 
@@ -163,6 +163,7 @@ export class Game {
     if (pY < 0) {
       this.isOver = true;
       store.dispatch(gameOver(true));
+      store.dispatch(gamePlaying(false));
       return;
     }
 
