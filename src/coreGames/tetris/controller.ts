@@ -1,27 +1,57 @@
 import { Game } from './game';
 import { View } from './view';
+import { SPEED_MAP } from './settings';
+import { gamePlaying } from '../../store/tetrisReducer';
+import { store } from '../../store';
+import { ifDeviceHasTouch } from '../../utills/detectDevice';
 
 export class Controller {
   game: Game;
   view: View;
   intervalID: NodeJS.Timeout;
   isPlaying: boolean = false;
+  isOver: boolean = false;
   gameSpeed: number;
+  currentLvl: number;
+  isTouch: boolean;
 
   constructor(game: Game, view: View) {
     this.game = game;
     this.view = view;
     this.intervalID = null;
-    this.gameSpeed = 1000 - (this.game.getState().level + 1) * 100;
+    this.currentLvl = this.game.getState().level;
+    this.gameSpeed = SPEED_MAP.get(this.currentLvl);
+    this.isTouch = ifDeviceHasTouch();
 
     document.addEventListener('keydown', this.handleKeydown.bind(this));
+    if (this.isTouch) {
+      setTimeout(() => {
+        this.handleMobileActions();
+      }, 100);
+    }
 
     this.view.renderStartScreen();
   }
 
   update() {
+    const { level, isOver } = this.game.getState();
+
+    if (isOver) {
+      this.isOver = true;
+      this.handleGameOver();
+      return;
+    }
+
     this.game.movePeaceDown();
     this.view.render(this.game.getState());
+
+    if (this.currentLvl !== level) {
+      this.currentLvl = level;
+      this.gameSpeed = SPEED_MAP.get(this.currentLvl);
+
+      this.stopTimer();
+      this.startTimer();
+    }
   }
 
   play() {
@@ -34,7 +64,6 @@ export class Controller {
     this.isPlaying = false;
     this.stopTimer();
     this.view.renderPauseScreen();
-    // this.update();
   }
 
   startTimer() {
@@ -53,31 +82,99 @@ export class Controller {
   }
 
   handleKeydown(event: KeyboardEvent) {
-    switch (event.keyCode) {
-      case 13: // Enter
-        this.view.render(this.game.getState());
-        if (this.isPlaying) {
-          this.pause();
-        } else {
-          this.play();
-        }
+    switch (event.key.toLowerCase()) {
+      case 'enter':
+        this.handlePause();
         break;
-      case 37: // left arrow
-        this.game.movePeaceLeft();
-        this.view.render(this.game.getState());
+      case 'arrowleft':
+        this.handleLeft();
         break;
-      case 38: // up arrow
-        this.game.rotatePiece();
-        this.view.render(this.game.getState());
+      case 'arrowup':
+        this.handleUp();
         break;
-      case 39: // right arrow
-        this.game.movePeaceRight();
-        this.view.render(this.game.getState());
+      case 'arrowright':
+        this.handleRight();
         break;
-      case 40: // down arrow
-        this.game.movePeaceDown();
-        this.view.render(this.game.getState());
+      case 'arrowdown':
+        this.handleDown();
+        break;
+      default:
         break;
     }
+  }
+
+  handleMobileActions() {
+    const pause = document.querySelector('#pause');
+    const top = document.querySelector('#top');
+    const down = document.querySelector('#bottom');
+    const left = document.querySelector('#left');
+    const right = document.querySelector('#right');
+
+    if (!pause || !top || !down || !left || !right) {
+      setTimeout(() => {
+        this.handleMobileActions();
+      }, 100);
+      return;
+    }
+
+    pause.addEventListener('click', this.handlePause.bind(this));
+    top.addEventListener('click', this.handleUp.bind(this));
+    down.addEventListener('click', this.handleDown.bind(this));
+    left.addEventListener('click', this.handleLeft.bind(this));
+    right.addEventListener('click', this.handleRight.bind(this));
+  }
+
+  handlePause() {
+    if (this.isOver) {
+      return;
+    }
+
+    this.view.render(this.game.getState());
+
+    if (this.isPlaying) {
+      this.pause();
+      store.dispatch(gamePlaying(false));
+    } else {
+      this.play();
+      store.dispatch(gamePlaying(true));
+    }
+  }
+
+  handleUp() {
+    if (this.isOver) {
+      return;
+    }
+    this.game.rotatePiece();
+    this.view.render(this.game.getState());
+  }
+
+  handleDown() {
+    if (this.isOver) {
+      return;
+    }
+    this.game.movePeaceDown();
+    this.view.render(this.game.getState());
+  }
+
+  handleLeft() {
+    if (this.isOver) {
+      return;
+    }
+    this.game.movePeaceLeft();
+    this.view.render(this.game.getState());
+  }
+
+  handleRight() {
+    if (this.isOver) {
+      return;
+    }
+    this.game.movePeaceRight();
+    this.view.render(this.game.getState());
+  }
+
+  handleGameOver() {
+    this.isPlaying = false;
+    this.stopTimer();
+    this.view.renderGameOverScreen();
   }
 }

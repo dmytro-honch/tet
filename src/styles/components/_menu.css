@@ -25,6 +25,13 @@
     stroke: currentColor;
 }
 
+@media (max-width: 1200px) {
+    .menu__close--svg {
+        max-width: 1.2rem;
+        height: auto;
+    }
+}
+
 .menu__close--svg path {
     stroke-width: 5px;
     stroke-linecap: round;
@@ -69,7 +76,7 @@
     height: 100vh;
     border-radius: 0 0 50vw 0;
     opacity: 0;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.95);
     transform: translate(-100vw, -100vh);
     transition: all .3s ease-in-out;
 }

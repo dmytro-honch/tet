@@ -5,16 +5,17 @@ const TetrisPage = React.lazy(() => import('../pages/TetrisPage'));
 
 export const routingTree = [
   {
-    path: '/',
+    path: '/tet',
     component: WelcomePage,
     exact: true,
     key: 'WelcomePage',
-    title: 'Home'
-  }, {
-    path: '/play-tetris',
+    title: 'Home',
+  },
+  {
+    path: '/tet/play-tetris',
     component: TetrisPage,
     exact: true,
     key: 'TetrisPage',
-    title: 'Tetris'
-  }
-]
+    title: 'Tetris',
+  },
+];

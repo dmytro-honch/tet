@@ -14,9 +14,9 @@ html {
   line-height: 1.5;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
   html {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -100,6 +100,7 @@ img, svg {
 
 .app-styles {
   transition: all .3s ease-in-out;
+  user-select: none;
 }
 
 .container {
@@ -142,48 +143,18 @@ h1 {
   cursor: pointer;
 }
 
+@media (max-width: 769px) {
+  .tetris__color-switch {
+    padding: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
 .tetris__color-switch:hover {
   filter: brightness(120%);
 }
 
 .tetris__color-switch:focus {
   outline: none;
-}
-
-.tetris__canvas {
-  width: auto;
-  height: 100%;
-  background-color: rgba(20,20,20,.1);
-}
-
-.tetris__canvas--wrapper {
-  height: 80vh;
-  margin-bottom: 1rem;
-  width: auto;
-  max-width: 100%;
-  vertical-align: bottom;
-  position: relative;
-}
-
-.tetris__canvas--wrapper::before,
-.tetris__canvas--wrapper::after {
-  position: absolute;
-  content: '';
-  width: 2rem;
-  height: 2rem;
-  user-select: none;
-}
-
-.tetris__canvas--wrapper::before {
-  top: 0;
-  left: 0;
-  border-left: 1px solid #888;
-  border-top: 1px solid #888;
-}
-
-.tetris__canvas--wrapper::after {
-  bottom: 0;
-  right: 0;
-  border-right: 1px solid #888;
-  border-bottom: 1px solid #888;
 }

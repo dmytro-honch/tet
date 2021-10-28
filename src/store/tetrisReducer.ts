@@ -1,16 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from './index';
 
-
 const initialState = {
   score: 0,
   lines: 0,
   level: 0,
   nextPiece: [
-    [0,0,0],
-    [0,0,0],
-    [0,0,0]
-  ]
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ],
+  isGameOver: false,
+  isGamePlaying: false,
 };
 
 const tetrisSlice = createSlice({
@@ -25,11 +26,18 @@ const tetrisSlice = createSlice({
     clearStats(state) {
       state.score = 0;
       state.level = 1;
-    }
-  }
+    },
+    gameOver(state, action) {
+      state.isGameOver = action.payload;
+    },
+    gamePlaying(state, action) {
+      state.isGamePlaying = action.payload;
+    },
+  },
 });
 
-
 export default tetrisSlice.reducer;
-export const { increaseStats, clearStats } = tetrisSlice.actions;
+export const { increaseStats, clearStats, gameOver, gamePlaying } = tetrisSlice.actions;
 export const selectTetrisStat = (state: RootStateType) => state.tetris;
+export const selectIsTetrisOver = (state: RootStateType) => state.tetris.isGameOver;
+export const selectIsTetrisStarted = (state: RootStateType) => state.tetris.isGamePlaying;

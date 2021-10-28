@@ -2,43 +2,119 @@
   "name": "tetris",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://dmitry-v-goncharov.github.io/tet",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^12.20.7",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "@types/react-redux": "^7.1.16",
-    "@types/react-router-dom": "^5.1.7",
     "express": "^4.17.1",
-    "pg": "^8.6.0",
+    "pg": "^8.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.3",
-    "react-router-dom": "^5.2.0",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.27",
+    "@types/react": "^17.0.26",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.18",
+    "@types/react-router-dom": "^5.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "gh-pages": "^3.2.3",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.2.1",
+    "typescript": "^4.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint:check": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
+    "prettier:check": "prettier --write src/**/*.{css,scss,json,md,html}",
     "eject": "react-scripts eject",
-    "api": "nodemon api/index.js"
+    "api": "nodemon api/index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{css,scss,json,md,html}": [
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
+    "plugins": [
+      "prettier"
+    ],
     "extends": [
       "react-app",
-      "react-app/jest"
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "no-var": "warn",
+      "no-unused-vars": "warn",
+      "prefer-const": "warn",
+      "prettier/prettier": "warn",
+      "no-multi-spaces": [
+        "off",
+        {
+          "exceptions": {
+            "VariableDeclarator": true,
+            "ImportDeclaration": true,
+            "ObjectExpression": true,
+            "VariebleExpression": true
+          }
+        }
+      ],
+      "spaced-comment": [
+        "warn",
+        "always",
+        {
+          "markers": [
+            "/"
+          ]
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "@typescript-eslint/no-unused-vars": "error",
+          "@typescript-eslint/naming-convention": [
+            "warn",
+            {
+              "selector": "typeLike",
+              "format": [
+                "PascalCase"
+              ]
+            }
+          ]
+        }
+      }
     ]
+  },
+  "prettier": {
+    "endOfLine": "auto",
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 120
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ],
     "development": [
       "last 1 chrome version",
@@ -46,10 +122,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@reduxjs/toolkit": "^1.5.1",
-    "nodemon": "^2.0.7",
-    "prettier": "2.2.1",
-    "typescript": "^4.2.3"
+  "compilerOptions": {
+    "baseUrl": "src/"
   }
 }
