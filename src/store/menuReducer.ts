@@ -2,9 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootStateType } from './index';
 
 const initialState = {
-  isShow: false
+  isShow: false,
 };
-
 
 const menuStateSlice = createSlice({
   name: 'showMenu',
@@ -15,8 +14,8 @@ const menuStateSlice = createSlice({
     },
     hideMenu(state) {
       state.isShow = false;
-    }
-  }
+    },
+  },
 });
 
 export default menuStateSlice.reducer;

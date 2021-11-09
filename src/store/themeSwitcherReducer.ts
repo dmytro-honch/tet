@@ -4,9 +4,8 @@ import { RootStateType } from './index';
 const themeFromSessionStorage = sessionStorage.getItem('theme');
 
 const initialState = {
-  value: themeFromSessionStorage ? themeFromSessionStorage : 'defaultTheme'
+  value: themeFromSessionStorage ? themeFromSessionStorage : 'defaultTheme',
 };
-
 
 const themeSwitcherSlice = createSlice({
   name: 'theme',
@@ -17,8 +16,8 @@ const themeSwitcherSlice = createSlice({
     },
     changeThemeToDefault(state) {
       state.value = 'defaultTheme';
-    }
-  }
+    },
+  },
 });
 
 export default themeSwitcherSlice.reducer;

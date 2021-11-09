@@ -27,6 +27,11 @@ export function Menu() {
               Tetris
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/tet/leader-board" onClick={closeMenu} activeClassName="active" className="menu__link" exact>
+              Leader board
+            </NavLink>
+          </li>
         </ul>
       </div>
     </>

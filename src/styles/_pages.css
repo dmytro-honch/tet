@@ -1,0 +1,18 @@
+.wp__menu {
+    list-style-type: none;
+    margin: 0;
+}
+
+.wp__menu li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.error-404__wrapper {
+    text-align: center;
+}
+
+.error-404 {
+    max-width: 100%;
+    margin-bottom: 2rem;
+    fill: currentColor;
+}

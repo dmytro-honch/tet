@@ -9,32 +9,31 @@ export function ThemeSwitcher() {
   const dispatch = useAppDispatch();
 
   const changeThemeHandle = (event: any) => {
-    const action = (currentTheme === 'defaultTheme') ?
-      changeTheme() :
-      changeThemeToDefault();
+    const action = currentTheme === 'defaultTheme' ? changeTheme() : changeThemeToDefault();
 
     dispatch(action);
-    sessionStorage.setItem('theme', (currentTheme === 'defaultTheme') ? 'changedTheme' : 'defaultTheme');
+    sessionStorage.setItem('theme', currentTheme === 'defaultTheme' ? 'changedTheme' : 'defaultTheme');
     event.currentTarget.blur();
-  }
+  };
 
   return (
-    <button onClick={(event: any) => changeThemeHandle(event)}
-            id="color-switcher"
-            className="tetris__color-switch"
-            type="button">
-      <SunAndMoon currentTheme={currentTheme}/>
+    <button
+      onClick={(event: any) => changeThemeHandle(event)}
+      id="color-switcher"
+      className="tetris__color-switch"
+      type="button"
+    >
+      <SunAndMoon currentTheme={currentTheme} />
     </button>
   );
 }
 
-
-function SunAndMoon({ currentTheme }: {currentTheme: string}) {
-  return <>
-    <svg width="200" height="200" viewBox="0 0 200 200">
-      {currentTheme === 'defaultTheme' ?
-        <image href={icon_d} /> :
-        <image href={icon_n} /> }
-    </svg>
-  </>;
+function SunAndMoon({ currentTheme }: { currentTheme: string }) {
+  return (
+    <>
+      <svg width="200" height="200" viewBox="0 0 200 200">
+        {currentTheme === 'defaultTheme' ? <image href={icon_d} /> : <image href={icon_n} />}
+      </svg>
+    </>
+  );
 }
