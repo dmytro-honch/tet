@@ -1,0 +1,6 @@
+.fps-counter {
+    position: fixed;
+    right: .5rem;
+    bottom: .5rem;
+    font-size: 1.5rem;
+}

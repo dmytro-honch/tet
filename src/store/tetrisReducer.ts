@@ -5,11 +5,6 @@ const initialState = {
   score: 0,
   lines: 0,
   level: 0,
-  nextPiece: [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-  ],
   isGameOver: false,
   isGamePlaying: false,
 };
@@ -25,7 +20,8 @@ const tetrisSlice = createSlice({
     },
     clearStats(state) {
       state.score = 0;
-      state.level = 1;
+      state.level = 0;
+      state.lines = 0;
     },
     gameOver(state, action) {
       state.isGameOver = action.payload;

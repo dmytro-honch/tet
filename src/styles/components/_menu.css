@@ -1,147 +1,147 @@
 .menu__close {
-    background: none;
-    padding: 0;
-    border: none;
-    cursor: pointer;
-    opacity: .9;
-    transition: all 0.2s ease-in-out;
-    position: relative;
-    z-index: 999;
-    color: currentColor;
-    user-select: none;
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  z-index: 999;
+  color: currentColor;
+  user-select: none;
 }
 
 .menu__close:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .menu__close:focus {
-    outline: none;
-    opacity: 1;
+  outline: none;
+  opacity: 1;
 }
 
 .menu__close--svg {
-    fill: none;
-    stroke: currentColor;
+  fill: none;
+  stroke: currentColor;
 }
 
 @media (max-width: 1200px) {
-    .menu__close--svg {
-        max-width: 1.2rem;
-        height: auto;
-    }
+  .menu__close--svg {
+    max-width: 1.2rem;
+    height: auto;
+  }
 }
 
 .menu__close--svg path {
-    stroke-width: 5px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .menu__close--svg .top {
-    transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .menu__close--svg .middle {
-    transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .menu__close--svg .bottom {
-    transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .active .menu__close--svg path {
-    stroke: white;
+  stroke: white;
 }
 
 .active .menu__close--svg .top {
-    transform-origin: center center;
-    transform: translate(-25%, 25%) rotateZ(45deg);
+  transform-origin: center center;
+  transform: translate(-25%, 25%) rotateZ(45deg);
 }
 
 .active .menu__close--svg .middle {
-    opacity: 0;
+  opacity: 0;
 }
 
 .active .menu__close--svg .bottom {
-    transform-origin: center center;
-    transform: translate(-25%, -17%) rotateZ(-45deg);
+  transform-origin: center center;
+  transform: translate(-25%, -17%) rotateZ(-45deg);
 }
 
 .menu__wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    border-radius: 0 0 50vw 0;
-    opacity: 0;
-    background-color: rgba(0,0,0,.95);
-    transform: translate(-100vw, -100vh);
-    transition: all .3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  border-radius: 0 0 50vw 0;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  transform: translate(-100vw, -100vh);
+  transition: all 0.3s ease-in-out;
 }
 
 @media (min-width: 768px) {
-    .menu__wrapper {
-        padding: 6rem 2rem;
-    }
+  .menu__wrapper {
+    padding: 6rem 2rem;
+  }
 }
 
 @media (max-width: 769px) {
-    .menu__wrapper {
-        padding: 8rem 2rem 0;
-    }
+  .menu__wrapper {
+    padding: 8rem 2rem 0;
+  }
 }
 
 .menu__wrapper.show {
-    display: block;
-    opacity: 1;
-    transform: translate(0, 0);
-    z-index: 99;
-    border-radius: 0;
+  display: block;
+  opacity: 1;
+  transform: translate(0, 0);
+  z-index: 99;
+  border-radius: 0;
 }
 
 .menu {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    max-width: 20rem;
-    margin: 0 auto;
-    padding-left: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  margin: 0 auto;
+  padding-left: 0;
 }
 
 .menu__item {
-    padding: .2rem;
-    color: inherit;
+  padding: 0.2rem;
+  color: inherit;
 }
 
 .menu__link {
-    display: block;
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    padding: .5rem;
-    position: relative;
-    user-select: none;
+  display: block;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  position: relative;
+  user-select: none;
 }
 
 .menu__link::before {
-    content: '';
-    position: absolute;
-    left: -1rem;
-    top: 50%;
-    border-top: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    transform: translateY(-50%);
-    transition: border-left-color 0.5s ease-in-out;
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  border-top: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  transform: translateY(-50%);
+  transition: border-left-color 0.5s ease-in-out;
 }
 
 .menu__link.active {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .menu__link.active::before {
-    border-left-color: white;
+  border-left-color: white;
 }
