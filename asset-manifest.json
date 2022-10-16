@@ -1,26 +1,15 @@
 {
   "files": {
-    "main.css": "/tet/static/css/main.da799f36.chunk.css",
-    "main.js": "/tet/static/js/main.1875ccc1.chunk.js",
-    "main.js.map": "/tet/static/js/main.1875ccc1.chunk.js.map",
-    "runtime-main.js": "/tet/static/js/runtime-main.550dbcc9.js",
-    "runtime-main.js.map": "/tet/static/js/runtime-main.550dbcc9.js.map",
-    "static/js/2.d92fa7c3.chunk.js": "/tet/static/js/2.d92fa7c3.chunk.js",
-    "static/js/2.d92fa7c3.chunk.js.map": "/tet/static/js/2.d92fa7c3.chunk.js.map",
-    "static/js/3.3959642c.chunk.js": "/tet/static/js/3.3959642c.chunk.js",
-    "static/js/3.3959642c.chunk.js.map": "/tet/static/js/3.3959642c.chunk.js.map",
-    "static/js/4.858dd2c6.chunk.js": "/tet/static/js/4.858dd2c6.chunk.js",
-    "static/js/4.858dd2c6.chunk.js.map": "/tet/static/js/4.858dd2c6.chunk.js.map",
+    "main.css": "/tet/static/css/main.3fb57e00.css",
+    "main.js": "/tet/static/js/main.d3d2af0f.js",
+    "static/media/switch_d.png": "/tet/static/media/switch_d.deaea3e9491345d14303.png",
+    "static/media/switch_n.png": "/tet/static/media/switch_n.cf7a680a1ec0c102be09.png",
     "index.html": "/tet/index.html",
-    "static/css/main.da799f36.chunk.css.map": "/tet/static/css/main.da799f36.chunk.css.map",
-    "static/js/2.d92fa7c3.chunk.js.LICENSE.txt": "/tet/static/js/2.d92fa7c3.chunk.js.LICENSE.txt",
-    "static/media/switch_d.deaea3e9.png": "/tet/static/media/switch_d.deaea3e9.png",
-    "static/media/switch_n.cf7a680a.png": "/tet/static/media/switch_n.cf7a680a.png"
+    "main.3fb57e00.css.map": "/tet/static/css/main.3fb57e00.css.map",
+    "main.d3d2af0f.js.map": "/tet/static/js/main.d3d2af0f.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.550dbcc9.js",
-    "static/js/2.d92fa7c3.chunk.js",
-    "static/css/main.da799f36.chunk.css",
-    "static/js/main.1875ccc1.chunk.js"
+    "static/css/main.3fb57e00.css",
+    "static/js/main.d3d2af0f.js"
   ]
 }
